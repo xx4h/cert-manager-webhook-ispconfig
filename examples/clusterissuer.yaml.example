@@ -1,0 +1,49 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-staging
+spec:
+  acme:
+    # Change to your letsencrypt email
+    email: webmaster@example.com
+    server: https://acme-staging-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      name: letsencrypt-staging-account-key
+    solvers:
+    - dns01:
+        webhook:
+          groupName: acme.xx4h.de
+          solverName: ISPConfig
+          config:
+            APIUrl: "https://YOUR_ISPCONFIG_URL/remote/json.php"
+            APIUsername:
+              name: ispconfig-secret
+              key: api_user
+            APIPassword:
+              name: ispconfig-secret
+              key: api_password
+---
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-production
+spec:
+  acme:
+    # Change to your letsencrypt email
+    email: webmaster@example.com
+    server: https://acme-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      name: letsencrypt-production-account-key
+    solvers:
+    - dns01:
+        webhook:
+          groupName: acme.xx4h.de
+          solverName: ISPConfig
+          config:
+            APIUrl: "https://YOUR_ISPCONFIG_URL/remote/json.php"
+            APIUsername:
+              name: ispconfig-secret
+              key: api_user
+            APIPassword:
+              name: ispconfig-secret
+              key: api_password

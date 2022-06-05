@@ -1,0 +1,11 @@
+{
+    "APIUrl": "https://YOUR_ISPCONFIG_URL/remote/json.php",
+    "APIUsername": {
+        "name": "ispconfig-secret",
+        "key": "api_user"
+    },
+    "APIPassword": {
+        "name": "ispconfig-secret",
+        "key": "api_password"
+    }
+}

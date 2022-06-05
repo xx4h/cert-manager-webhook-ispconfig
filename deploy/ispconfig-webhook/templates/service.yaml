@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "ispconfig-webhook.fullname" . }}
+  labels:
+    app: {{ include "ispconfig-webhook.name" . }}
+    chart: {{ include "ispconfig-webhook.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: https
+      protocol: TCP
+      name: https
+  selector:
+    app: {{ include "ispconfig-webhook.name" . }}
+    release: {{ .Release.Name }}
