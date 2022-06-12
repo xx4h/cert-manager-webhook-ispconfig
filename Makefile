@@ -33,7 +33,7 @@ build:
 	docker build -t "$(IMAGE_NAME):$(IMAGE_TAG)" .
 
 buildah:
-	buildah build -t "$(IMAGE_NAME):$(IMAGE_TAG)" .
+	buildah bud -t "$(IMAGE_NAME):$(IMAGE_TAG)" .
 
 .PHONY: rendered-manifest.yaml
 rendered-manifest.yaml:
